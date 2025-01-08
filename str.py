@@ -1,4 +1,4 @@
-#string and functions of strings
+#string and functions of string
 a = "Why fit in, When you are born to stand out"
 print(len(a))
 print(a.count("o"))
