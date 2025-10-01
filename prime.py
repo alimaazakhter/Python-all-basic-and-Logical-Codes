@@ -1,16 +1,17 @@
 #check if the number is prime or not
-num = int(input("Enter any number :"))
-if num <=1:
-    print("It is not a prime number")
-else:
-    for i in range(2,11):
-        if num%i == 0:
-            print("It is not a prime number")
-            break
-        else:
-            print("It is a prime number")   
+num = int(input("Enter any number: "))
 
-            break 
+if num <= 1:
+    print("Not a prime number")
+else:
+    for i in range(2, num):
+        if num % i == 0:
+            print("Not a prime number")
+            break
+    else:
+        print("Prime number")
+
+#-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 # 👉 Prime number wo number hai jo sirf 2 factors rakhta hai: 1 aur khud apna.
 
@@ -110,3 +111,4 @@ else:
 # 11 → prime ✔️ (1 aur 11 se hi divide hota hai).
 
 # 12 → prime nahi ❌ (1,2,3,4,6,12 se divide hota hai).
+
