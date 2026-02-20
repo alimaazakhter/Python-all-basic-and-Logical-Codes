@@ -1,0 +1,226 @@
+# Q1: Write a Python program to square and cube every number in a given list of integers using Lambda
+
+numbers = list(map(int, input("Enter numbers separated by space: ").split()))
+
+squares = list(map(lambda x: x**2, numbers))
+cubes = list(map(lambda x: x**3, numbers))
+
+print("Squares:", squares)
+print("Cubes:", cubes)
+
+# -------------------------------------------------------------------
+
+# Q2: Write a program in python to implement Fibonacci series up to user entered number (Use recursive Function)
+
+def fibonacci(n):
+    if n <= 1:
+        return n
+    else:
+        return fibonacci(n-1) + fibonacci(n-2)
+
+num = int(input("Enter number of terms: "))
+print("Fibonacci Series:")
+for i in range(num):
+    print(fibonacci(i), end=" ")
+
+# -------------------------------------------------------------------
+
+# Q3: Write a Python program to implement module
+
+# File 1: mymodule.py
+# def add(a, b):
+#     return a + b
+# def sub(a, b):
+#     return a - b
+
+# File 2: main.py
+import mymodule
+
+a = int(input("Enter first number: "))
+b = int(input("Enter second number: "))
+
+print("Addition:", mymodule.add(a, b))
+print("Subtraction:", mymodule.sub(a, b))
+
+# -------------------------------------------------------------------
+
+# Q4: Write a program to make a simple calculator (using functions)
+
+def add(a, b): return a + b
+def sub(a, b): return a - b
+def mul(a, b): return a * b
+def div(a, b): return a / b
+
+a = float(input("Enter first number: "))
+b = float(input("Enter second number: "))
+op = input("Enter operator (+, -, *, /): ")
+
+if op == '+':
+    print("Result:", add(a, b))
+elif op == '-':
+    print("Result:", sub(a, b))
+elif op == '*':
+    print("Result:", mul(a, b))
+elif op == '/':
+    print("Result:", div(a, b))
+else:
+    print("Invalid operator!")
+
+# -------------------------------------------------------------------
+
+# Q5: Write a program to demonstrate local variable, global variable and global keyword
+
+x = 10  # global variable
+
+def show():
+    y = 5  # local variable
+    print("Inside function, local y =", y)
+    print("Inside function, global x =", x)
+
+def change():
+    global x
+    x = x + 5
+    print("Global x changed to:", x)
+
+show()
+change()
+print("Outside function, x =", x)
+
+# -------------------------------------------------------------------
+
+# Q6: Write a Python function that accepts a string and counts the number of upper and lower case letters
+
+def count_case(s):
+    upper = sum(1 for c in s if c.isupper())
+    lower = sum(1 for c in s if c.islower())
+    print("Uppercase letters:", upper)
+    print("Lowercase letters:", lower)
+
+text = input("Enter a string: ")
+count_case(text)
+
+# -------------------------------------------------------------------
+
+# Q7: Write a Python function that takes a list and returns a new list with distinct elements from the first list
+
+def unique_list(lst):
+    return list(set(lst))
+
+numbers = list(map(int, input("Enter numbers separated by space: ").split()))
+print("Unique elements:", unique_list(numbers))
+
+# -------------------------------------------------------------------
+
+# Q8: Write a Python function that takes a number as a parameter and checks whether the number is prime or not
+
+def is_prime(n):
+    if n <= 1:
+        return False
+    for i in range(2, int(n/2)+1):
+        if n % i == 0:
+            return False
+    return True
+
+num = int(input("Enter a number: "))
+if is_prime(num):
+    print(num, "is a Prime Number")
+else:
+    print(num, "is not a Prime Number")
+
+# -------------------------------------------------------------------
+
+# Q9: Write a Python function to print the even and odd numbers from a given list
+
+def even_odd(lst):
+    even = [x for x in lst if x % 2 == 0]
+    odd = [x for x in lst if x % 2 != 0]
+    print("Even numbers:", even)
+    print("Odd numbers:", odd)
+
+numbers = list(map(int, input("Enter numbers separated by space: ").split()))
+even_odd(numbers)
+
+# -------------------------------------------------------------------
+
+# Q10: Write a Python program to create Fibonacci series up to n using Lambda
+
+from functools import reduce
+
+n = int(input("Enter number of terms: "))
+fibo = lambda n: reduce(lambda x, _: x + [x[-1] + x[-2]], range(n-2), [0, 1])
+print("Fibonacci Series:", fibo(n))
+
+# -------------------------------------------------------------------
+
+# Q11: Write a Python program to multiply all the numbers in a given list using lambda.(reduce function)
+
+from functools import reduce
+
+numbers = list(map(int, input("Enter numbers separated by space: ").split()))
+result = reduce(lambda x, y: x * y, numbers)
+print("Multiplication of all numbers:", result)
+
+# -------------------------------------------------------------------
+
+# Q12: Write a Python program to calculate the sum of the positive and negative numbers of a given list of numbers using the lambda function
+
+from functools import reduce
+
+numbers = list(map(int, input("Enter numbers separated by space: ").split()))
+
+pos_sum = reduce(lambda x, y: x + y, filter(lambda n: n > 0, numbers))
+neg_sum = reduce(lambda x, y: x + y, filter(lambda n: n < 0, numbers))
+
+print("Sum of positive numbers:", pos_sum)
+print("Sum of negative numbers:", neg_sum)
+
+# -------------------------------------------------------------------
+
+# Q13: Write a Python program to remove None values from a given list using the lambda function
+
+data = list(map(lambda x: int(x) if x != "None" else None, input("Enter numbers (type None for blank): ").split()))
+clean_data = list(filter(lambda x: x is not None, data))
+print("List after removing None values:", clean_data)
+
+# -------------------------------------------------------------------
+
+# Q14: Write a Python Program to demonstrate Variable length arguments and Keyword Variable Length arguments
+
+def show_args(*args):
+    print("Variable length arguments:", args)
+
+def show_kwargs(**kwargs):
+    print("Keyword variable length arguments:", kwargs)
+
+show_args(10, 20, 30)
+show_kwargs(name="Dev", age=21, city="Rajkot")
+
+# -------------------------------------------------------------------
+
+# Q15: Write a python program to calculate gross salary and net salary of an employee. create separate functions to calculate DA, HRA, PF and Tax
+
+def da(basic): return basic * 0.10
+def hra(basic): return basic * 0.15
+def pf(basic): return basic * 0.05
+def tax(basic): return basic * 0.08
+
+basic = float(input("Enter Basic Salary: "))
+
+gross = basic + da(basic) + hra(basic)
+net = gross - (pf(basic) + tax(basic))
+
+print("Gross Salary:", gross)
+print("Net Salary:", net)
+
+# -------------------------------------------------------------------
+
+# Q16: Write a Python Program to demonstrate the special variable __name__
+
+def display():
+    print("This function is inside demo module.")
+
+if __name__ == "__main__":
+    print("Code is running directly.")
+    display()
+else:
+    print("Code is imported as a module.")
